@@ -1,4 +1,4 @@
-# Deux instances du frontend Nginx.
+# Trois instances du frontend Nginx.
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -8,7 +8,7 @@ metadata:
     app: bijouterie
     tier: frontend
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: bijouterie
