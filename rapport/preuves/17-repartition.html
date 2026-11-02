@@ -1,0 +1,10 @@
+<!doctype html><meta charset="utf-8"><title>17-repartition</title><style>body{font:16px system-ui;margin:24px;background:#f8fafc;color:#172033}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px monospace;padding:18px;background:white;border:1px solid #cbd5e1}h1{font-size:22px}</style><h1>17-repartition</h1><p>Résultats enregistrés des commandes exécutées sur le cluster docker-desktop.</p><pre>Requêtes HTTP vers le Service backend depuis un pod frontend
+$ kubectl exec -n bijouterie deploy/frontend -- wget -qO- http://backend:3000/api/config
+{&quot;shopName&quot;:&quot;Maison Amina Dakar&quot;,&quot;currency&quot;:&quot;FCFA&quot;,&quot;maxFileSizeMb&quot;:5,&quot;categories&quot;:[&quot;bague&quot;,&quot;collier&quot;,&quot;bracelet&quot;,&quot;boucles&quot;,&quot;pendentif&quot;,&quot;montre&quot;],&quot;carats&quot;:[9,14,18,22,24],&quot;servedBy&quot;:&quot;backend-6fc94475d-vz94z&quot;}
+$ kubectl exec -n bijouterie deploy/frontend -- wget -qO- http://backend:3000/api/config
+{&quot;shopName&quot;:&quot;Maison Amina Dakar&quot;,&quot;currency&quot;:&quot;FCFA&quot;,&quot;maxFileSizeMb&quot;:5,&quot;categories&quot;:[&quot;bague&quot;,&quot;collier&quot;,&quot;bracelet&quot;,&quot;boucles&quot;,&quot;pendentif&quot;,&quot;montre&quot;],&quot;carats&quot;:[9,14,18,22,24],&quot;servedBy&quot;:&quot;backend-6fc94475d-vz94z&quot;}
+$ kubectl exec -n bijouterie deploy/frontend -- wget -qO- http://backend:3000/api/config
+{&quot;shopName&quot;:&quot;Maison Amina Dakar&quot;,&quot;currency&quot;:&quot;FCFA&quot;,&quot;maxFileSizeMb&quot;:5,&quot;categories&quot;:[&quot;bague&quot;,&quot;collier&quot;,&quot;bracelet&quot;,&quot;boucles&quot;,&quot;pendentif&quot;,&quot;montre&quot;],&quot;carats&quot;:[9,14,18,22,24],&quot;servedBy&quot;:&quot;backend-6fc94475d-k5tn5&quot;}
+
+Pods distincts observés : 2
+</pre>

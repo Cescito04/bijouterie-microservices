@@ -1,0 +1,56 @@
+# Une instance MySQL, sans stockage persistant.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: bijouterie
+  labels:
+    app: bijouterie
+    tier: database
+spec:
+  replicas: 1
+  # Évite deux instances MySQL pendant une mise à jour ; pas de PVC pour le test de perte des données.
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: bijouterie
+      tier: database
+  template:
+    metadata:
+      labels:
+        app: bijouterie
+        tier: database
+    spec:
+      containers:
+        - name: mysql
+          image: cescito04/bijouterie-mysql:initial-1
+          ports:
+            - name: mysql
+              containerPort: 3306
+          # envFrom importe toutes les clés du Secret comme variables.
+          envFrom:
+            - secretRef:
+                name: mysql-secret
+          # Ressources réservées et limites CPU/mémoire.
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "1Gi"
+          # Attend que MySQL écoute avant de démarrer les contrôles réguliers.
+          startupProbe:
+            tcpSocket:
+              port: mysql
+            periodSeconds: 5
+            failureThreshold: 60
+          readinessProbe:
+            tcpSocket:
+              port: mysql
+            periodSeconds: 5
+          livenessProbe:
+            tcpSocket:
+              port: mysql
+            periodSeconds: 10

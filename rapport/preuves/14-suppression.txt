@@ -1,0 +1,6 @@
+Test de suppression par API REST
+POST /api/bijoux
+{"id":10,"nom":"Bijou temporaire suppression","description":"","categorie":"bague","carat":18,"poids_g":2,"prix":1000,"stock":1,"has_photo":false,"created_at":"2026-11-02T21:22:50.000Z","updated_at":"2026-11-02T21:22:50.000Z"}
+DELETE /api/bijoux/10
+
+Après suppression : 9 bijoux ; le bijou temporaire est absent.

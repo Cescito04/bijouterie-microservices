@@ -1,0 +1,8 @@
+# Namespace dédié à l’application.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: bijouterie
+  labels:
+    app: bijouterie
+    tier: database

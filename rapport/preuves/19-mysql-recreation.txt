@@ -1,0 +1,17 @@
+$ kubectl get pods -n bijouterie -l tier=database
+NAME                     READY   STATUS    RESTARTS   AGE
+mysql-5d95995d6c-mqzfv   1/1     Running   0          15m
+$ kubectl delete pod mysql-5d95995d6c-mqzfv -n bijouterie
+pod "mysql-5d95995d6c-mqzfv" deleted from bijouterie namespace
+$ kubectl rollout status deployment/mysql -n bijouterie --timeout=180s
+Waiting for deployment "mysql" rollout to finish: 0 of 1 updated replicas are available...
+deployment "mysql" successfully rolled out
+$ kubectl wait --for=condition=available deployment/backend -n bijouterie --timeout=120s
+deployment.apps/backend condition met
+$ kubectl get pods -n bijouterie
+NAME                        READY   STATUS    RESTARTS   AGE
+backend-6fc94475d-k5tn5     1/1     Running   0          65s
+backend-6fc94475d-vz94z     1/1     Running   0          53s
+frontend-5d79cb698c-rkmxm   1/1     Running   0          15m
+frontend-5d79cb698c-wm2gt   1/1     Running   0          15m
+mysql-5d95995d6c-2z7rl      1/1     Running   0          29s

@@ -1,0 +1,9 @@
+Requêtes HTTP vers le Service backend depuis un pod frontend
+$ kubectl exec -n bijouterie deploy/frontend -- wget -qO- http://backend:3000/api/config
+{"shopName":"Maison Amina Dakar","currency":"FCFA","maxFileSizeMb":5,"categories":["bague","collier","bracelet","boucles","pendentif","montre"],"carats":[9,14,18,22,24],"servedBy":"backend-6fc94475d-vz94z"}
+$ kubectl exec -n bijouterie deploy/frontend -- wget -qO- http://backend:3000/api/config
+{"shopName":"Maison Amina Dakar","currency":"FCFA","maxFileSizeMb":5,"categories":["bague","collier","bracelet","boucles","pendentif","montre"],"carats":[9,14,18,22,24],"servedBy":"backend-6fc94475d-vz94z"}
+$ kubectl exec -n bijouterie deploy/frontend -- wget -qO- http://backend:3000/api/config
+{"shopName":"Maison Amina Dakar","currency":"FCFA","maxFileSizeMb":5,"categories":["bague","collier","bracelet","boucles","pendentif","montre"],"carats":[9,14,18,22,24],"servedBy":"backend-6fc94475d-k5tn5"}
+
+Pods distincts observés : 2

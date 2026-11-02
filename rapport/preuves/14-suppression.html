@@ -1,0 +1,7 @@
+<!doctype html><meta charset="utf-8"><title>14-suppression</title><style>body{font:16px system-ui;margin:24px;background:#f8fafc;color:#172033}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px monospace;padding:18px;background:white;border:1px solid #cbd5e1}h1{font-size:22px}</style><h1>14-suppression</h1><p>Résultats enregistrés des commandes exécutées sur le cluster docker-desktop.</p><pre>Test de suppression par API REST
+POST /api/bijoux
+{&quot;id&quot;:10,&quot;nom&quot;:&quot;Bijou temporaire suppression&quot;,&quot;description&quot;:&quot;&quot;,&quot;categorie&quot;:&quot;bague&quot;,&quot;carat&quot;:18,&quot;poids_g&quot;:2,&quot;prix&quot;:1000,&quot;stock&quot;:1,&quot;has_photo&quot;:false,&quot;created_at&quot;:&quot;2026-11-02T21:22:50.000Z&quot;,&quot;updated_at&quot;:&quot;2026-11-02T21:22:50.000Z&quot;}
+DELETE /api/bijoux/10
+
+Après suppression : 9 bijoux ; le bijou temporaire est absent.
+</pre>
