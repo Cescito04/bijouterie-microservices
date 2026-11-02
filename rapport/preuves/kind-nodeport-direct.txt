@@ -1,0 +1,13 @@
+NAME                            READY   STATUS    RESTARTS   AGE
+pod/backend-f7c88d69d-c6dbj     1/1     Running   0          106s
+pod/backend-f7c88d69d-h446t     1/1     Running   0          106s
+pod/frontend-5d79cb698c-9ssbk   1/1     Running   0          106s
+pod/frontend-5d79cb698c-kh8xc   1/1     Running   0          106s
+pod/mysql-5d95995d6c-pbp7w      1/1     Running   0          106s
+
+NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+service/backend    ClusterIP   10.96.141.116   <none>        3000/TCP       106s
+service/frontend   NodePort    10.96.227.46    <none>        80:30080/TCP   106s
+service/mysql      ClusterIP   10.96.12.209    <none>        3306/TCP       106s
+127.0.0.1:30080
+{"status":"ready","database":"up"}

@@ -58,3 +58,12 @@ Sans volume persistant, le nouveau conteneur MySQL réinitialise sa base à part
 ## Vérification de l’accès direct au NodePort
 
 Le 2 novembre 2026, après arrêt du tunnel, `curl http://localhost:30080/api/ready` renvoie une connexion refusée. L’adresse du nœud `172.22.0.2:30080` ne répond pas depuis le Mac. La recréation du Service frontend ne corrige pas le problème. Le tunnel a été rétabli pour conserver l’accès local. L’accès direct reste à configurer au niveau du réseau du cluster ; aucune réinitialisation du cluster existant n’a été effectuée.
+
+
+## Accès direct résolu avec kind
+
+Un cluster séparé `bijouterie` a été créé avec la configuration `infra/kind/cluster.yaml`. Le contexte actif est désormais `kind-bijouterie`. Le cluster `docker-desktop` est conservé.
+
+Le port 30080 du Mac est publié vers le NodePort 30080 du nœud kind. Après arrêt du tunnel, `/api/ready` renvoie `{"status":"ready","database":"up"}`. Le processus qui écoute sur le Mac est Docker, sans tunnel kubectl. Les cinq pods sont prêts.
+
+`11b-site-nodeport-direct-kind.jpg` montre le site via l’accès direct. Les captures précédentes des tests ont été prises sur le premier cluster ; celle-ci documente le passage à kind et la résolution du problème réseau. Le nouveau cluster possède sa propre base avec les huit bijoux de démonstration.
