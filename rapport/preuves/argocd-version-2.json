@@ -1,0 +1,67 @@
+{
+  "sync": {
+    "comparedTo": {
+      "destination": {
+        "namespace": "bijouterie",
+        "server": "https://kubernetes.default.svc"
+      },
+      "source": {
+        "path": "k8s",
+        "repoURL": "https://github.com/Cescito04/bijouterie-microservices.git",
+        "targetRevision": "main"
+      }
+    },
+    "revision": "ff79e794323a2d91cc2bb4b0068909167b5408a4",
+    "status": "Synced"
+  },
+  "health": {
+    "lastTransitionTime": "2026-11-02T22:08:36Z",
+    "status": "Healthy"
+  },
+  "history": [
+    {
+      "deployStartedAt": "2026-11-02T22:05:14Z",
+      "deployedAt": "2026-11-02T22:05:16Z",
+      "id": 0,
+      "initiatedBy": {
+        "automated": true
+      },
+      "revision": "b2d9d53ccaf977704764d397cfb033077403a785",
+      "source": {
+        "path": "k8s",
+        "repoURL": "https://github.com/Cescito04/bijouterie-microservices.git",
+        "targetRevision": "main"
+      }
+    },
+    {
+      "deployStartedAt": "2026-11-02T22:06:37Z",
+      "deployedAt": "2026-11-02T22:06:39Z",
+      "id": 1,
+      "initiatedBy": {
+        "automated": true
+      },
+      "revision": "3c804b8bec361efa9a6ae2788891784fa5a2b9b4",
+      "source": {
+        "path": "k8s",
+        "repoURL": "https://github.com/Cescito04/bijouterie-microservices.git",
+        "targetRevision": "main"
+      }
+    },
+    {
+      "deployStartedAt": "2026-11-02T22:07:32Z",
+      "deployedAt": "2026-11-02T22:07:33Z",
+      "id": 2,
+      "initiatedBy": {
+        "automated": true
+      },
+      "revision": "ff79e794323a2d91cc2bb4b0068909167b5408a4",
+      "source": {
+        "path": "k8s",
+        "repoURL": "https://github.com/Cescito04/bijouterie-microservices.git",
+        "targetRevision": "main"
+      }
+    }
+  ],
+  "conditions": null,
+  "operation": "Succeeded"
+}

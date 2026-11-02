@@ -82,3 +82,21 @@ Jenkins est disponible sur http://localhost:8081. Son exécuteur intégré dispo
 | `24-dockerhub-tags-jenkins-frontend.jpg`, `24b-dockerhub-tags-jenkins-backend.jpg`, `24c-dockerhub-tags-jenkins-mysql.jpg` | Tags 1 et git-0d83940bcaff publiés pour les trois images. |
 
 Le build 1 utilise le commit 0d83940bcaff. Les manifests Kubernetes utilisent encore initial-1 ; la mise à jour des tags sera effectuée pour la démonstration de déploiement. Le stage Push utilise withCredentials et un répertoire Docker temporaire supprimé en fin de commande. Aucun token n’est enregistré dans Git.
+
+## Argo CD — GitOps
+
+Argo CD v3.5.7 est installé dans le namespace argocd du cluster kind-bijouterie. Interface HTTPS locale : https://localhost:8082. L’Application bijouterie surveille main et k8s avec auto-sync, prune, selfHeal et CreateNamespace=true.
+
+| Capture | Résultat |
+| --- | --- |
+| `25-argocd-synced-healthy.jpg` | Premier déploiement automatique, Synced et Healthy. |
+| `26-argocd-sync-apres-commit.jpg` | Commit 3c804b8 : frontend passé de 2 à 3 replicas. |
+| `27-argocd-selfheal.jpg` et `27b-argocd-selfheal-preuve.jpg` | Service frontend supprimé puis recréé automatiquement ; UID différent, NodePort 30080 conservé. La seconde capture présente la sortie enregistrée du test dans une page locale. |
+| `28-argocd-historique.jpg` | Historique des trois déploiements initiés par automated sync policy. |
+| `29-argocd-version-2-healthy.jpg` | Images du build Jenkins 2 déployées ; retour à Synced et Healthy. |
+
+Les preuves JSON dans rapport/preuves conservent les révisions et l’historique Argo CD. L’annotation refresh=hard a été utilisée pour relire Git immédiatement ; elle n’applique aucune ressource. La synchronisation elle-même a été déclenchée par la politique automatique, comme indiqué dans l’historique. Aucun kubectl apply n’a été effectué dans bijouterie après la prise en charge par Argo CD.
+
+État final : 3 replicas frontend, 2 backend, 1 MySQL, trois images taguées 2. L’API ready répond database: up sur localhost:30080 sans tunnel applicatif. La mise à jour MySQL recrée le pod et réinitialise les données, puisqu’aucun PVC n’est configuré.
+
+Au premier démarrage, une erreur temporaire de comparaison signalait que repo-server n’était pas encore joignable. Après démarrage des composants et actualisation, l’application est devenue Synced/Healthy.

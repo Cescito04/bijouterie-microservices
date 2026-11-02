@@ -1,0 +1,5 @@
+$ kubectl delete service frontend -n bijouterie
+service "frontend" deleted from bijouterie namespace
+Ancien UID : d8a548e5-d27f-4912-b6cc-17238324111b
+Nouveau UID : 434c8e83-7af2-4628-b84a-9bb6409237c3
+NodePort recréé : 30080

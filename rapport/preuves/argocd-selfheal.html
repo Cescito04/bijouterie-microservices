@@ -1,0 +1,6 @@
+<!doctype html><meta charset="utf-8"><title>Autoréparation Argo CD</title><style>body{font:18px system-ui;margin:30px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:16px monospace;background:#f1f5f9;padding:20px}</style><h1>Autoréparation Argo CD</h1><p>Sortie enregistrée du test sur kind-bijouterie. Le Service est recréé sans kubectl apply.</p><pre>$ kubectl delete service frontend -n bijouterie
+service &quot;frontend&quot; deleted from bijouterie namespace
+Ancien UID : d8a548e5-d27f-4912-b6cc-17238324111b
+Nouveau UID : 434c8e83-7af2-4628-b84a-9bb6409237c3
+NodePort recréé : 30080
+</pre>
