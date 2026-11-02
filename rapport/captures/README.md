@@ -67,3 +67,18 @@ Un cluster séparé `bijouterie` a été créé avec la configuration `infra/kin
 Le port 30080 du Mac est publié vers le NodePort 30080 du nœud kind. Après arrêt du tunnel, `/api/ready` renvoie `{"status":"ready","database":"up"}`. Le processus qui écoute sur le Mac est Docker, sans tunnel kubectl. Les cinq pods sont prêts.
 
 `11b-site-nodeport-direct-kind.jpg` montre le site via l’accès direct. Les captures précédentes des tests ont été prises sur le premier cluster ; celle-ci documente le passage à kind et la résolution du problème réseau. Le nouveau cluster possède sa propre base avec les huit bijoux de démonstration.
+
+
+## Jenkins — premier build
+
+Jenkins est disponible sur http://localhost:8081. Son exécuteur intégré dispose du client Docker et accède au moteur du Mac. Le job bijouterie utilise le Jenkinsfile de main ; Poll SCM vérifie les modifications toutes les cinq minutes.
+
+| Capture | Résultat |
+| --- | --- |
+| `20-jenkins-credential.jpg` | Credential global dockerhub-credentials, utilisateur cescito04, token masqué. |
+| `21-jenkins-job.jpg` et `21b-jenkins-declencheur.jpg` | Pipeline script from SCM, dépôt Git, branche main, Jenkinsfile et Poll SCM. |
+| `22-jenkins-build.jpg` | Build 1 : Checkout, Build, Tag et Push réussis. |
+| `23-jenkins-console.jpg` | Fin de console : publication et Finished: SUCCESS. |
+| `24-dockerhub-tags-jenkins-frontend.jpg`, `24b-dockerhub-tags-jenkins-backend.jpg`, `24c-dockerhub-tags-jenkins-mysql.jpg` | Tags 1 et git-0d83940bcaff publiés pour les trois images. |
+
+Le build 1 utilise le commit 0d83940bcaff. Les manifests Kubernetes utilisent encore initial-1 ; la mise à jour des tags sera effectuée pour la démonstration de déploiement. Le stage Push utilise withCredentials et un répertoire Docker temporaire supprimé en fin de commande. Aucun token n’est enregistré dans Git.

@@ -1,0 +1,21 @@
+# Git est la source de configuration de l’application.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bijouterie
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Cescito04/bijouterie-microservices.git
+    targetRevision: main
+    path: k8s
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: bijouterie
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,32 @@
+Obtained Jenkinsfile from git https://github.com/Cescito04/bijouterie-microservices.git
+[Pipeline] { (Checkout)
+Checking out Revision 0d83940bcaff6b1f754c6fec27cf975799530e65 (refs/remotes/origin/main)
+[Pipeline] { (Build)
+Successfully built ccf38dcc6269
+Successfully tagged bijouterie-frontend:build-1
+Successfully built d891b20a4419
+Successfully tagged bijouterie-backend:build-1
+Successfully built fe4574a594dc
+Successfully tagged bijouterie-mysql:build-1
+[Pipeline] { (Tag)
++ docker tag bijouterie-frontend:build-1 cescito04/bijouterie-frontend:1
++ docker tag bijouterie-frontend:build-1 cescito04/bijouterie-frontend:git-0d83940bcaff
++ docker tag bijouterie-backend:build-1 cescito04/bijouterie-backend:1
++ docker tag bijouterie-backend:build-1 cescito04/bijouterie-backend:git-0d83940bcaff
++ docker tag bijouterie-mysql:build-1 cescito04/bijouterie-mysql:1
++ docker tag bijouterie-mysql:build-1 cescito04/bijouterie-mysql:git-0d83940bcaff
+[Pipeline] { (Push)
+Login Succeeded
+The push refers to repository [docker.io/cescito04/bijouterie-frontend]
+1: digest: sha256:ccf38dcc62692f6bc46d511edc1bcb8a0dfe07c12d2b45da9cd62c1100c78174 size: 2482
+The push refers to repository [docker.io/cescito04/bijouterie-frontend]
+git-0d83940bcaff: digest: sha256:ccf38dcc62692f6bc46d511edc1bcb8a0dfe07c12d2b45da9cd62c1100c78174 size: 2482
+The push refers to repository [docker.io/cescito04/bijouterie-backend]
+1: digest: sha256:d891b20a44198e6e085376f12e27e92a6e680afcb092b3006d3bf5e4e5803219 size: 2054
+The push refers to repository [docker.io/cescito04/bijouterie-backend]
+git-0d83940bcaff: digest: sha256:d891b20a44198e6e085376f12e27e92a6e680afcb092b3006d3bf5e4e5803219 size: 2054
+The push refers to repository [docker.io/cescito04/bijouterie-mysql]
+1: digest: sha256:fe4574a594dc9c19c9f44260bcc8de9227028a46fd3bda8128e0ebf9dc73c560 size: 2699
+The push refers to repository [docker.io/cescito04/bijouterie-mysql]
+git-0d83940bcaff: digest: sha256:fe4574a594dc9c19c9f44260bcc8de9227028a46fd3bda8128e0ebf9dc73c560 size: 2699
+Finished: SUCCESS
