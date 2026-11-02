@@ -4,3 +4,6 @@ node_modules/
 
 # Fichiers système macOS
 .DS_Store
+
+# Identifiants locaux Jenkins
+infra/jenkins/.secrets/
