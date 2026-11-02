@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: cescito04/bijouterie-frontend:initial-1
+          image: cescito04/bijouterie-frontend:2
           ports:
             - name: http
               containerPort: 80

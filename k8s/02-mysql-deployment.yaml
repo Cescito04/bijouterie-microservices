@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: cescito04/bijouterie-mysql:initial-1
+          image: cescito04/bijouterie-mysql:2
           ports:
             - name: mysql
               containerPort: 3306
