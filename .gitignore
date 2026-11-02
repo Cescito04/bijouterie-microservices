@@ -1,3 +1,6 @@
 .env
 node_modules/
 *.log
+
+# Fichiers système macOS
+.DS_Store
